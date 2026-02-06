@@ -1,12 +1,12 @@
 {
   "name": "codex-rebuild",
   "productName": "Codex",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Codex Electron App - Cross-platform Build",
   "main": "src/.vite/build/main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "electron .",
+    "start": "node scripts/start-dev.js",
+    "dev": "node scripts/start-dev.js",
 
     "patch": "node scripts/patch-copyright.js",
 
