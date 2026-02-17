@@ -32,10 +32,10 @@ function locateBundle() {
 }
 
 const AFTER_BASE =
-  'const o=s,A0=Array.isArray(i.commandActions)&&i.commandActions.length>0&&i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search"));if(r==="item/commandExecution/requestApproval"&&A0){Yt.dispatchMessage("mcp-response",{response:{id:n,result:{decision:"acceptForSession"}}});break}this.updateConversationState(o,a=>{a.requests.push(e),a.hasUnreadTurn=!0}),this.approvalRequestListeners.forEach';
+  'const o=s,A0=Array.isArray(i.commandActions)&&i.commandActions.length>0?i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search")):!0;if(r==="item/commandExecution/requestApproval"&&A0){Yt.dispatchMessage("mcp-response",{response:{id:n,result:{decision:"acceptForSession"}}});break}this.updateConversationState(o,a=>{a.requests.push(e),a.hasUnreadTurn=!0}),this.approvalRequestListeners.forEach';
 
 const AFTER_DEDUPE =
-  'const o=s,A0=Array.isArray(i.commandActions)&&i.commandActions.length>0&&i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search"));if(r==="item/commandExecution/requestApproval"&&A0){Yt.dispatchMessage("mcp-response",{response:{id:n,result:{decision:"acceptForSession"}}});break}this.updateConversationState(o,a=>{const l=typeof i.itemId=="string"?i.itemId:null;a.requests=a.requests.filter(c=>c.id!==n&&!(c.method===r&&l!=null&&c.params?.itemId===l)),a.requests.push(e),a.hasUnreadTurn=!0}),this.approvalRequestListeners.forEach';
+  'const o=s,A0=Array.isArray(i.commandActions)&&i.commandActions.length>0?i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search")):!0;if(r==="item/commandExecution/requestApproval"&&A0){Yt.dispatchMessage("mcp-response",{response:{id:n,result:{decision:"acceptForSession"}}});break}this.updateConversationState(o,a=>{const l=typeof i.itemId=="string"?i.itemId:null;a.requests=a.requests.filter(c=>c.id!==n&&!(c.method===r&&l!=null&&c.params?.itemId===l)),a.requests.push(e),a.hasUnreadTurn=!0}),this.approvalRequestListeners.forEach';
 
 const TARGETS = [
   // Baseline (no approval-queue patch)
@@ -105,7 +105,7 @@ function main() {
 }
 
 function A0_MARKER() {
-  return 'A0=Array.isArray(i.commandActions)&&i.commandActions.length>0&&i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search"))';
+  return 'A0=Array.isArray(i.commandActions)&&i.commandActions.length>0?i.commandActions.every(l=>l&&(l.type==="read"||l.type==="listFiles"||l.type==="search")):!0';
 }
 
 main();
